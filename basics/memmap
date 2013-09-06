@@ -1,0 +1,14 @@
+ENTRY(start)
+MEMORY
+{
+    ram (wx)         : ORIGIN = 0x0200, LENGTH = 0x0200
+    bootcode(wx)     : ORIGIN = 0xff80, LENGTH = 0x0200
+    reset(wx)        : ORIGIN = 0xfffe, LENGTH = 0x0002
+}
+
+SECTIONS
+{
+   .text             :{*(.text*)} > bootcode
+   .reset             :{*(.reset*)} > reset
+}
+
